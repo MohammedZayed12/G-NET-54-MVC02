@@ -1,0 +1,351 @@
+﻿GymManagment.DataAccess.Entity
+@{
+    ViewData["Title"] = Model.Name + " Details";
+}
+
+<section class="plan-details-section">
+    <div class="container px-4 px-lg-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+
+                <!-- Plan Details Card -->
+                <div class="card plan-details-card">
+
+                    <!-- Plan Header -->
+                    <div class="plan-header">
+                        <div class="plan-icon">
+                            <i class="bi bi-person-workspace"></i>
+                        </div>
+
+                        <div>
+                            <span class="plan-label">
+                                MEMBERSHIP PLAN
+                            </span>
+
+                            <h1 class="plan-name">
+                                @Model.Name
+                            </h1>
+                        </div>
+                    </div>
+
+                    <!-- Price -->
+                    <div class="price-section">
+                        <span class="currency">EGP</span>
+
+                        <span class="price">
+                            @Model.Price.ToString("N0")
+                        </span>
+
+                        <span class="duration">
+                            / @Model.DurationDays Days
+                        </span>
+                    </div>
+
+                    <!-- Plan Information -->
+                    <div class="plan-info">
+
+                        <!-- Duration -->
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="bi bi-calendar-check"></i>
+                            </div>
+
+                            <div>
+                                <span class="info-label">
+                                    Duration
+                                </span>
+
+                                <strong class="info-value">
+                                    @Model.DurationDays Days
+                                </strong>
+                            </div>
+                        </div>
+
+                        <!-- Status -->
+                        <div class="info-item">
+                            <div class="info-icon @(Model.IsActive ? "" : "inactive-icon")">
+                                <i class="bi @(Model.IsActive ? "bi-check-lg" : "bi-x-lg")"></i>
+                            </div>
+
+                            <div>
+                                <span class="info-label">
+                                    Status
+                                </span>
+
+                                @if (Model.IsActive)
+                                {
+                                    <strong class="info-value active-status">
+                                        Active
+                                    </strong>
+                                }
+                                else
+                                {
+                                    <strong class="info-value inactive-status">
+                                        Inactive
+                                    </strong>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Description -->
+                    <div class="description-section">
+                        <span class="description-label">
+                            ABOUT THIS PLAN
+                        </span>
+
+                        <p class="description">
+                            @Model.Description
+                        </p>
+                    </div>
+
+                    <!-- Back Button -->
+                    <div class="back-button-wrapper">
+                        <a asp-action="Index"
+                           class="btn btn-custom-back">
+                            <i class="bi bi-arrow-left"></i>
+                            <span>Back to Plans</span>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .plan-details-section {
+        width: 100%;
+        padding-top: 150px;
+        padding-bottom: 70px;
+    }
+
+    .plan-details-card {
+        width: 100%;
+        min-height: 560px;
+        padding: 50px 45px;
+        background-color: #16181a;
+        border: 1px solid rgba(204, 255, 0, 0.25);
+        border-radius: 24px;
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
+        transition: all 0.35s ease;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .plan-details-card:hover {
+            border-color: rgba(204, 255, 0, 0.8);
+            box-shadow: 0 20px 55px rgba(0, 0, 0, 0.45), 0 0 25px rgba(204, 255, 0, 0.12);
+            transform: translateY(-3px);
+        }
+
+    .plan-header {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin-bottom: 38px;
+    }
+
+    .plan-icon {
+        width: 54px;
+        height: 54px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+        background-color: rgba(204, 255, 0, 0.08);
+        border: 1px solid rgba(204, 255, 0, 0.25);
+        color: #ccff00;
+        font-size: 23px;
+    }
+
+    .plan-label {
+        display: block;
+        margin-bottom: 5px;
+        color: #8b9197;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+    }
+
+    .plan-name {
+        margin: 0;
+        color: #ffffff;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+
+    .price-section {
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin-bottom: 38px;
+    }
+
+    .currency {
+        color: #ccff00;
+        font-size: 0.95rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    .price {
+        color: #ffffff;
+        font-size: 3rem;
+        line-height: 1;
+        font-weight: 800;
+        letter-spacing: -1px;
+    }
+
+    .duration {
+        color: #8b9197;
+        font-size: 0.95rem;
+    }
+
+    .plan-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        padding-bottom: 32px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .info-item {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        padding: 16px;
+        background-color: rgba(255, 255, 255, 0.025);
+        border-radius: 14px;
+    }
+
+    .info-icon {
+        width: 38px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        border-radius: 10px;
+        background-color: rgba(204, 255, 0, 0.08);
+        color: #ccff00;
+        font-size: 17px;
+    }
+
+    .inactive-icon {
+        background-color: rgba(220, 53, 69, 0.08);
+        color: #dc3545;
+    }
+
+    .info-label {
+        display: block;
+        margin-bottom: 3px;
+        color: #777d83;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .info-value {
+        color: #ffffff;
+        font-size: 0.95rem;
+    }
+
+    .active-status {
+        color: #ccff00;
+    }
+
+    .inactive-status {
+        color: #8b9197;
+    }
+
+    .description-section {
+        padding-top: 32px;
+        margin-bottom: 40px;
+    }
+
+    .description-label {
+        display: block;
+        margin-bottom: 10px;
+        color: #777d83;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+    }
+
+    .description {
+        margin: 0;
+        color: #aeb4ba;
+        font-size: 0.95rem;
+        line-height: 1.8;
+    }
+
+    .back-button-wrapper {
+        margin-top: auto;
+    }
+
+    .btn-custom-back {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        padding: 13px 20px;
+        border-radius: 12px;
+        background-color: #24272a;
+        color: #ffffff;
+        border: 1px solid #34383c;
+        font-size: 0.95rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+        .btn-custom-back:hover {
+            background-color: #ccff00;
+            color: #000000;
+            border-color: #ccff00;
+            box-shadow: 0 0 18px rgba(204, 255, 0, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .btn-custom-back i {
+            transition: transform 0.3s ease;
+        }
+
+        .btn-custom-back:hover i {
+            transform: translateX(-3px);
+        }
+
+    @@media (max-width: 576px) {
+        .plan-details-section {
+            padding-top: 120px;
+        }
+
+        .plan-details-card {
+            padding: 32px 22px;
+            border-radius: 20px;
+            min-height: auto;
+        }
+
+        .plan-header {
+            margin-bottom: 28px;
+        }
+
+        .plan-name {
+            font-size: 1.6rem;
+        }
+
+        .price {
+            font-size: 2.4rem;
+        }
+
+        .plan-info {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

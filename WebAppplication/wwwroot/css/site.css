@@ -1,0 +1,624 @@
+:root {
+    --primary: #a3e635; /* الأخضر الليموني الفسفوري النيون */
+    --primary-dark: #84cc16; /* درجة أغمق للتأثيرات والـ Hover */
+    --dark: #121413; /* أسود فحمي خلفية أساسية للموقع */
+    --dark-2: #1e2220; /* خلفية الكروت والأقسام الفرعية */
+    --gray: #9ca3af;
+    --light: #121413; /* إلغاء الخلفية البيضاء من جسم الصفحة */
+    --white: #ffffff;
+}
+
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: "Rubik", sans-serif;
+    color: var(--white);
+    background: var(--dark) !important;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem var(--primary);
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+    color: var(--bs-secondary-color);
+    text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+    text-align: start;
+}
+
+/* ==========================================
+   1. Floating Glassmorphic Navbar (الكبسولة الزجاجية)
+   ========================================== */
+body {
+    padding-top: 0px !important; /* إلغاء المسافة الفائضة من الأعلى تماماً */
+}
+
+/* تثبيت النافبار في أعلى الشاشة وجعله عائماً وفوق الخلفية الزيتية بلا فراغات */
+.custom-glass-nav {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding-top: 20px !important;
+    z-index: 1030;
+}
+
+/* الحاوية الداخلية على شكل كبسولة زجاجية ضبابية عائمة تندمج مع الخلفية الزيتية */
+.nav-glass-container {
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 50px !important;
+    padding: 10px 30px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+    max-width: 1400px !important;
+    margin: 0 auto;
+}
+
+/* اللوجو والروابط داخل الكبسولة الزجاجية */
+.custom-glass-nav .navbar-brand {
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: #ffffff !important;
+    letter-spacing: -0.5px;
+}
+
+.custom-glass-nav .nav-link {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 6px 16px !important;
+    transition: all 0.3s ease;
+}
+
+    .custom-glass-nav .nav-link:hover {
+        color: #ffffff !important;
+        opacity: 1;
+    }
+
+    .custom-glass-nav .nav-link.active {
+        color: var(--primary) !important;
+        font-weight: 700;
+    }
+
+/* ==========================================
+   2. Gym Hero Section & Character Cards
+   ========================================== */
+.gym-hero {
+    min-height: 85vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background: radial-gradient(circle at 75% 20%, #2e4324 0%, var(--dark) 70%) !important;
+    padding: 60px 0;
+    overflow: hidden;
+}
+
+.hero-badge, .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 18px;
+}
+
+.hero-content h1 {
+    font-size: clamp(48px, 5.5vw, 85px);
+    line-height: .98;
+    font-weight: 900;
+    letter-spacing: -3px;
+    margin-bottom: 25px;
+    color: var(--white);
+}
+
+    .hero-content h1 span,
+    .section-heading h2 span,
+    .why-section h2 span {
+        color: var(--primary);
+    }
+
+.hero-description {
+    max-width: 750px;
+    color: #a1a1aa;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    margin: 35px 0;
+}
+
+.btn-primary-custom, .btn-outline-custom {
+    border-radius: 50px;
+    padding: 14px 28px;
+    font-weight: 800;
+    transition: .3s ease;
+}
+
+.btn-primary-custom {
+    background: var(--primary);
+    color: #000000;
+    border: 2px solid var(--primary);
+}
+
+    .btn-primary-custom:hover {
+        background: var(--white);
+        color: #000000;
+        border-color: var(--white);
+        transform: translateY(-3px);
+        box-shadow: 0 0 20px rgba(163, 230, 53, 0.4);
+    }
+
+.btn-outline-custom {
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: var(--white);
+}
+
+    .btn-outline-custom:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--white);
+        border-color: var(--white);
+        transform: translateY(-3px);
+    }
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-item {
+    padding: 20px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+    .stat-item strong {
+        display: block;
+        font-size: 27px;
+        font-weight: 900;
+        color: var(--white);
+    }
+
+    .stat-item span {
+        display: block;
+        color: #888;
+        font-size: 13px;
+        margin-top: 5px;
+    }
+
+/* Character & Curved White Card Settings */
+.hero-image {
+    position: relative;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+    .hero-image img {
+        width: 100%;
+        max-width: 380px;
+        height: auto;
+        max-height: 650px;
+        object-fit: contain;
+        object-position: center;
+        background-color: #ffffff !important;
+        padding: 20px 10px 0 10px;
+        border-radius: 180px 180px 20px 20px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        position: relative;
+        z-index: 2;
+        mix-blend-mode: normal !important;
+        filter: none !important;
+        transition: all 0.4s ease-in-out;
+    }
+
+.hero-image-glow {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, var(--primary) 0%, rgba(46, 67, 36, 0.3) 65%, transparent 100%);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(45px);
+    opacity: .35;
+    z-index: 1;
+}
+
+.floating-card {
+    position: absolute;
+    z-index: 3;
+    bottom: 40px;
+    left: 15px;
+    background: rgba(30, 34, 32, .95);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 15px 20px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    text-align: left;
+    box-shadow: 0 15px 40px rgba(0,0,0,.6);
+}
+
+    .floating-card i {
+        color: var(--primary);
+        font-size: 25px;
+    }
+
+    .floating-card strong,
+    .floating-card span {
+        display: block;
+    }
+
+    .floating-card span {
+        color: #aaa;
+        font-size: 12px;
+    }
+
+/* ==========================================
+   3. Gym Marquee Section
+   ========================================== */
+.gym-marquee {
+    background: var(--primary);
+    color: #111;
+    overflow: hidden;
+    padding: 18px 0;
+    font-weight: 900;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.marquee-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 35px;
+    white-space: nowrap;
+}
+
+    .marquee-content i {
+        font-size: 12px;
+    }
+
+/* ==========================================
+   4. About Us Section & Curved White Cards
+   ========================================== */
+.about-section, .why-section {
+    background: var(--dark) !important;
+    padding: 110px 0;
+    width: 100%;
+    color: var(--white);
+}
+
+.about-images {
+    position: relative;
+    min-height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-main-image {
+    width: 88%;
+    height: 500px;
+    background: #ffffff !important;
+    border-radius: 40px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    padding: 15px;
+}
+
+    .about-main-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        mix-blend-mode: normal !important;
+        filter: none !important;
+        transition: transform 0.4s ease;
+    }
+
+    .about-main-image:hover img {
+        transform: scale(1.03);
+    }
+
+.about-small-image {
+    position: absolute;
+    right: 0px;
+    bottom: 20px;
+    width: 40%;
+    height: 240px;
+    background: #ffffff !important;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    border: 4px solid var(--dark);
+    padding: 10px;
+}
+
+    .about-small-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        mix-blend-mode: normal !important;
+        filter: none !important;
+    }
+
+.experience-card {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    background: var(--primary);
+    padding: 16px 22px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    z-index: 3;
+}
+
+    .experience-card strong {
+        font-size: 36px;
+        font-weight: 900;
+        line-height: 1;
+        color: #111;
+    }
+
+    .experience-card span {
+        font-size: 12px;
+        font-weight: 800;
+        line-height: 1.2;
+        color: #111;
+        text-transform: uppercase;
+    }
+
+.section-heading h2, .why-section h2 {
+    font-size: clamp(38px, 4vw, 58px);
+    line-height: 1.05;
+    font-weight: 900;
+    letter-spacing: -2px;
+    margin-bottom: 25px;
+    color: var(--white);
+}
+
+.section-heading > p, .why-description {
+    color: #a1a1aa;
+    line-height: 1.8;
+    font-size: 17px;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.feature-box {
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+    background: var(--dark-2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    transition: .3s ease;
+    color: var(--white);
+}
+
+    .feature-box:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary);
+        box-shadow: 0 10px 30px rgba(163, 230, 53, 0.15);
+    }
+
+    .feature-box > i {
+        color: var(--primary) !important;
+        font-size: 28px;
+    }
+
+    .feature-box h3 {
+        font-size: 17px;
+        font-weight: 800;
+        margin-bottom: 5px;
+        color: var(--white);
+    }
+
+    .feature-box p {
+        margin: 0;
+        color: #9ca3af;
+        font-size: 13px;
+    }
+
+/* ==========================================
+   5. Workouts Section
+   ========================================== */
+.workouts-section {
+    background: var(--dark-2);
+    color: white;
+    padding: 110px 0;
+    width: 100%;
+}
+
+.workout-card {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    min-height: 380px;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: var(--dark);
+}
+
+    .workout-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center top;
+        display: block;
+        transition: transform 0.4s ease;
+    }
+
+    .workout-card:hover img {
+        transform: scale(1.05);
+    }
+
+    .workout-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(transparent 35%, rgba(18, 20, 19, 0.95));
+    }
+
+.workout-overlay {
+    position: absolute;
+    z-index: 2;
+    bottom: 25px;
+    left: 25px;
+    right: 25px;
+}
+
+    .workout-overlay span {
+        color: var(--primary);
+        font-weight: 900;
+    }
+
+    .workout-overlay h3 {
+        font-size: 27px;
+        font-weight: 900;
+        margin: 8px 0 15px;
+    }
+
+    .workout-overlay a {
+        color: white;
+        font-weight: 700;
+    }
+
+        .workout-overlay a:hover {
+            color: var(--primary);
+        }
+
+/* ==========================================
+   6. Footer Section
+   ========================================== */
+.gym-footer {
+    background: #080a09;
+    color: white;
+    width: 100%;
+    padding-bottom: 25px;
+    margin: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+    .gym-footer p, .gym-footer a {
+        color: #999;
+        transition: 0.3s ease;
+    }
+
+        .gym-footer a:hover {
+            color: var(--primary);
+        }
+
+.footer-logo {
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -1px;
+}
+
+    .footer-logo span {
+        color: var(--primary);
+    }
+
+.gym-footer h4 {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.gym-footer a {
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #777;
+    font-size: 13px;
+}
+
+    .footer-bottom i {
+        font-size: 18px;
+        margin-left: 15px;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+
+        .footer-bottom i:hover {
+            color: var(--primary);
+        }
+
+/* Responsive Overrides */
+@media (max-width: 991px) {
+    .gym-hero {
+        padding: 60px 0;
+    }
+
+    .hero-image {
+        margin-top: 30px;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}

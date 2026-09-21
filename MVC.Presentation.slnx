@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="GymManagment.Busniess/GymManagment.Busniess.csproj" Id="af9e410d-1632-4e35-94d0-d80f746c919e" />
+  <Project Path="GymManagment.DataAccess/GymManagment.DataAccess.csproj" Id="b0657d25-b751-4ddf-8af7-a4718bb457fb" />
+  <Project Path="WebApplication/GymManagmentPresentation.csproj" />
+</Solution>
